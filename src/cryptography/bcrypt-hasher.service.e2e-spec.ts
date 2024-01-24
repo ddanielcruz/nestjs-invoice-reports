@@ -1,12 +1,12 @@
 import * as bcrypt from 'bcryptjs'
 
-import { BcryptHasher, SALT_ROUNDS } from './bcrypt-hasher.service'
+import { BcryptHasherService, SALT_ROUNDS } from './bcrypt-hasher.service'
 
-describe('BcryptHasher', () => {
-  let sut: BcryptHasher
+describe('BcryptHasherService', () => {
+  let sut: BcryptHasherService
 
   beforeEach(() => {
-    sut = new BcryptHasher()
+    sut = new BcryptHasherService()
   })
 
   it('should be defined', () => {
