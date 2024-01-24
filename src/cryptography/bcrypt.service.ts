@@ -1,10 +1,11 @@
 import { hash, compare } from 'bcryptjs'
 
-import { HasherService } from './hasher.service'
+import { HashComparer } from './hash-comparer.service'
+import { HashGenerator } from './hash-generator.service'
 
 export const SALT_ROUNDS = 12
 
-export class BcryptHasherService extends HasherService {
+export class BcryptService implements HashGenerator, HashComparer {
   private readonly saltRounds = SALT_ROUNDS
 
   hash(plainText: string): Promise<string> {
