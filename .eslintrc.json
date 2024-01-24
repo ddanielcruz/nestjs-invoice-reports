@@ -3,7 +3,6 @@
     "@rocketseat/eslint-config/node"
   ],
   "rules": {
-    "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/no-empty-function": "off",
     "no-useless-constructor": "off",
     "import/order": [
