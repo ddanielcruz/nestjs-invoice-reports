@@ -6,7 +6,6 @@ import { UsersRepository } from '@/user/user.repository'
 
 import { PrismaService } from '../prisma.service'
 
-// TODO Add integration tests
 @Injectable()
 export class PrismaUsersRepository extends UsersRepository {
   constructor(private readonly prisma: PrismaService) {
