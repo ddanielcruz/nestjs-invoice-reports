@@ -1,16 +1,20 @@
+import { Test } from '@nestjs/testing'
 import * as bcrypt from 'bcryptjs'
 
-import { BcryptService, SALT_ROUNDS } from './bcrypt.service'
+import { EnvModule } from '@/env/env.module'
+
+import { BcryptService } from './bcrypt.service'
 
 describe('BcryptService', () => {
   let sut: BcryptService
 
-  beforeEach(() => {
-    sut = new BcryptService()
-  })
+  beforeEach(async () => {
+    const moduleRef = await Test.createTestingModule({
+      imports: [EnvModule],
+      providers: [BcryptService],
+    }).compile()
 
-  it('should be defined', () => {
-    expect(sut).toBeDefined()
+    sut = moduleRef.get(BcryptService)
   })
 
   describe('hash', () => {
@@ -20,7 +24,7 @@ describe('BcryptService', () => {
       const hashedText = await sut.hash(plainText)
 
       expect(hashedText).not.toBe(plainText)
-      expect(hashSpy).toHaveBeenCalledWith(plainText, SALT_ROUNDS)
+      expect(hashSpy).toHaveBeenCalledWith(plainText, expect.any(Number))
     })
 
     it('should return a different hashed string for the same plain text', async () => {
@@ -35,7 +39,7 @@ describe('BcryptService', () => {
   describe('compare', () => {
     it('should return true if plain text and hashed text are the same', async () => {
       const plainText = 'any_plain_text'
-      const hashedText = await bcrypt.hash(plainText, SALT_ROUNDS)
+      const hashedText = await bcrypt.hash(plainText, sut.saltRounds)
       const areEqual = await sut.compare(plainText, hashedText)
 
       expect(areEqual).toBe(true)
@@ -43,7 +47,7 @@ describe('BcryptService', () => {
 
     it('should return false if plain text and hashed text are not the same', async () => {
       const plainText = 'any_plain_text'
-      const hashedText = await bcrypt.hash('other_plain_text', SALT_ROUNDS)
+      const hashedText = await bcrypt.hash('other_plain_text', sut.saltRounds)
       const areEqual = await sut.compare(plainText, hashedText)
 
       expect(areEqual).toBe(false)

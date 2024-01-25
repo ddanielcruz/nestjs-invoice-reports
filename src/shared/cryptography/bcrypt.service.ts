@@ -1,12 +1,18 @@
+import { Injectable } from '@nestjs/common'
 import { hash, compare } from 'bcryptjs'
+
+import { EnvService } from '@/env/env.service'
 
 import { HashComparer } from './hash-comparer.interface'
 import { HashGenerator } from './hash-generator.interface'
 
-export const SALT_ROUNDS = 12
-
+@Injectable()
 export class BcryptService implements HashGenerator, HashComparer {
-  private readonly saltRounds = SALT_ROUNDS
+  get saltRounds(): number {
+    return this.env.get('SALT_ROUNDS')
+  }
+
+  constructor(private readonly env: EnvService) {}
 
   hash(plainText: string): Promise<string> {
     return hash(plainText, this.saltRounds)
