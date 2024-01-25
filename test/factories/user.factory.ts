@@ -9,6 +9,7 @@ export function makeUser(override?: Partial<User>): User {
     name: faker.internet.displayName(),
     hashedPassword: faker.string.uuid(),
     createdAt: new Date(),
+    updatedAt: new Date(),
     ...override,
   }
 }

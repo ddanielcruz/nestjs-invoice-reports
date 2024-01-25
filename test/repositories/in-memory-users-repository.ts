@@ -1,16 +1,16 @@
 import { randomUUID } from 'node:crypto'
 
-import { Optional } from '@/types/optional'
 import { User } from '@/user/user.entity'
-import { UsersRepository } from '@/user/user.repository'
+import { CreateUserInput, UsersRepository } from '@/user/user.repository'
 
 export class InMemoryUsersRepository extends UsersRepository {
   items: User[] = []
 
-  async create(user: Optional<User, 'id' | 'createdAt'>): Promise<User> {
+  async create(user: CreateUserInput): Promise<User> {
     const newUser: User = {
       id: randomUUID(),
       createdAt: new Date(),
+      updatedAt: new Date(),
       ...user,
     }
 
