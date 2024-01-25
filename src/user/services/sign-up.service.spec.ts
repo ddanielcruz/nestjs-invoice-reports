@@ -1,5 +1,5 @@
 import { HashGenerator } from '@/shared/cryptography/hash-generator.interface'
-import { makeUser } from '@/test/factories/user.factory'
+import { makeUser } from '@/test/factories/user-factory'
 import { InMemoryUsersRepository } from '@/test/repositories/in-memory-users-repository'
 
 import { SignUpRequest, SignUpService } from './sign-up.service'
