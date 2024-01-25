@@ -6,6 +6,14 @@ meta {
 
 post {
   url: {{baseUrl}}/users/sign-up
-  body: none
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "email": "daniel@example.com",
+    "name": "Daniel",
+    "password": "123456"
+  }
 }

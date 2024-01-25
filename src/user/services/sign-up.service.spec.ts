@@ -1,4 +1,4 @@
-import { HashGenerator } from '@/cryptography/hash-generator.service'
+import { HashGenerator } from '@/cryptography/services/hash-generator.service'
 import { makeUser } from '@/test/factories/user.factory'
 import { InMemoryUsersRepository } from '@/test/repositories/in-memory-users-repository'
 
