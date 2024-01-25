@@ -1,4 +1,4 @@
-import { Optional } from '@/types/optional'
+import { Optional } from '@/shared/types/optional'
 
 import { User } from './user.entity'
 

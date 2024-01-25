@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 
-import { Optional } from '@/types/optional'
+import { Optional } from '@/shared/types/optional'
 import { User } from '@/user/user.entity'
 import { UsersRepository } from '@/user/user.repository'
 

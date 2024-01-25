@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { hash, compare } from 'bcryptjs'
 
-import { EnvService } from '@/env/env.service'
+import { EnvService } from '@/shared/env/env.service'
 
 import { HashComparer } from './hash-comparer.interface'
 import { HashGenerator } from './hash-generator.interface'

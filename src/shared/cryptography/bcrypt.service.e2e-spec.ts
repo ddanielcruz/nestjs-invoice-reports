@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing'
 import * as bcrypt from 'bcryptjs'
 
-import { EnvModule } from '@/env/env.module'
+import { EnvModule } from '@/shared/env/env.module'
 
 import { BcryptService } from './bcrypt.service'
 
