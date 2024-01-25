@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
 
-import { BcryptService } from './services/bcrypt.service'
-import { HashComparer } from './services/hash-comparer.service'
-import { HashGenerator } from './services/hash-generator.service'
+import { BcryptService } from './bcrypt.service'
+import { HashComparer } from './hash-comparer.interface'
+import { HashGenerator } from './hash-generator.interface'
 
 @Module({
   providers: [

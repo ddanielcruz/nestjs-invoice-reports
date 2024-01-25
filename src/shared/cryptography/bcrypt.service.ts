@@ -1,7 +1,7 @@
 import { hash, compare } from 'bcryptjs'
 
-import { HashComparer } from './hash-comparer.service'
-import { HashGenerator } from './hash-generator.service'
+import { HashComparer } from './hash-comparer.interface'
+import { HashGenerator } from './hash-generator.interface'
 
 export const SALT_ROUNDS = 12
 
