@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing'
 import * as bcrypt from 'bcryptjs'
 
-import { EnvModule } from '@/shared/env/env.module'
+import { ConfigModule } from '@/shared/config/config.module'
 
 import { BcryptService } from './bcrypt.service'
 
@@ -10,7 +10,7 @@ describe('BcryptService', () => {
 
   beforeEach(async () => {
     const moduleRef = await Test.createTestingModule({
-      imports: [EnvModule],
+      imports: [ConfigModule],
       providers: [BcryptService],
     }).compile()
 

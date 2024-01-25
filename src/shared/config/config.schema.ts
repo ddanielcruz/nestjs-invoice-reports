@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const envSchema = z.object({
+export const configSchema = z.object({
   NODE_ENV: z
     .enum(['development', 'production', 'test'])
     .default('development'),
@@ -9,4 +9,4 @@ export const envSchema = z.object({
   SALT_ROUNDS: z.coerce.number().default(10),
 })
 
-export type Env = z.infer<typeof envSchema>
+export type Config = z.infer<typeof configSchema>
