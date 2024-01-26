@@ -1,18 +1,17 @@
 import { BadRequestException, Body, Controller, Post } from '@nestjs/common'
 
-import { SignUpDto } from './dto/sign-up.dto'
-import { UserAlreadyExistsError } from './errors/user-already-exists-error'
-import { SignUpService } from './services/sign-up.service'
+import { SignUpDto } from '../dtos/sign-up.dto'
+import { UserAlreadyExistsError } from '../errors/user-already-exists-error'
+import { SignUpService } from '../services/sign-up.service'
 
-// TODO Add integration tests
-@Controller('users')
-export class UserController {
+@Controller('/users/sign-up')
+export class SignUpController {
   constructor(private readonly signUpService: SignUpService) {}
 
-  @Post('sign-up')
-  async signUp(@Body() dto: SignUpDto) {
+  @Post()
+  async handle(@Body() body: SignUpDto) {
     try {
-      const { user } = await this.signUpService.execute(dto)
+      const { user } = await this.signUpService.execute(body)
 
       return {
         ...user,
