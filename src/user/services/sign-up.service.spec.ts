@@ -3,7 +3,7 @@ import { makeUser } from '@/test/factories/user-factory'
 import { InMemoryUsersRepository } from '@/test/repositories/in-memory-users-repository'
 
 import { SignUpRequest, SignUpService } from './sign-up.service'
-import { UserAlreadyExistsError } from '../errors/user-already-exists-error'
+import { UserAlreadyExistsError } from '../errors/user-already-exists.error'
 
 class HasherServiceStub implements HashGenerator {
   async hash(plainText: string): Promise<string> {

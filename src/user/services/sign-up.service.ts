@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 
 import { HashGenerator } from '@/shared/cryptography/hash-generator.interface'
 
-import { UserAlreadyExistsError } from '../errors/user-already-exists-error'
+import { UserAlreadyExistsError } from '../errors/user-already-exists.error'
 import { User } from '../user.entity'
 import { UsersRepository } from '../user.repository'
 
