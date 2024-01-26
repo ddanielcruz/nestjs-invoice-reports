@@ -16,6 +16,16 @@ services:
     networks:
       - invoices-network
 
+  redis:
+    image: redis:7.2
+    restart: unless-stopped
+    ports:
+      - 6379:6379
+    volumes:
+      - ./.docker/redis:/data/redis
+    networks:
+      - invoices-network
+
 networks:
   invoices-network:
     driver: bridge
