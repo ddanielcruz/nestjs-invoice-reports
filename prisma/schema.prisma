@@ -15,5 +15,26 @@ model User {
   createdAt      DateTime @default(now()) @map("created_at")
   updatedAt      DateTime @updatedAt @map("updated_at")
 
+  reports Report[]
+
   @@map("users")
+}
+
+enum ReportStatus {
+  pending
+  processing
+  completed
+  failed
+}
+
+model Report {
+  id        String       @id @default(cuid())
+  userId    String       @map("user_id")
+  url       String
+  status    ReportStatus @default(pending)
+  createdAt DateTime     @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("reports")
 }

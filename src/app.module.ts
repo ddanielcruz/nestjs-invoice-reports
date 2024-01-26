@@ -9,11 +9,12 @@ import { ZodValidationPipe } from 'nestjs-zod'
 
 import { AuthModule } from './auth/auth.module'
 import { LoggerMiddleware } from './core/middleware/logger.middleware'
+import { ReportModule } from './report/report.module'
 import { SharedModule } from './shared/shared.module'
 import { UserModule } from './user/user.module'
 
 @Module({
-  imports: [AuthModule, SharedModule, UserModule],
+  imports: [AuthModule, ReportModule, SharedModule, UserModule],
   providers: [
     {
       provide: APP_PIPE,
