@@ -5,13 +5,12 @@ import {
   RequestMethod,
 } from '@nestjs/common'
 
-import { DatabaseModule } from './database/database.module'
-import { ConfigModule } from './shared/config/config.module'
-import { LoggerMiddleware } from './shared/middleware/logger.middleware'
+import { LoggerMiddleware } from './core/middleware/logger.middleware'
+import { SharedModule } from './shared/shared.module'
 import { UserModule } from './user/user.module'
 
 @Module({
-  imports: [ConfigModule, DatabaseModule, UserModule],
+  imports: [SharedModule, UserModule],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
