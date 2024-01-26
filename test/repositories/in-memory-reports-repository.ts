@@ -1,7 +1,7 @@
 import { Report } from '@/report/report.entity'
-import { ReportRepository } from '@/report/report.repository'
+import { ReportsRepository } from '@/report/report.repository'
 
-export class InMemoryReportsRepository implements ReportRepository {
+export class InMemoryReportsRepository implements ReportsRepository {
   items: Report[] = []
 
   async fetchByUserId(userId: string): Promise<Report[]> {

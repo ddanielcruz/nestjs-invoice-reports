@@ -1,5 +1,5 @@
 import { Report } from './report.entity'
 
-export abstract class ReportRepository {
+export abstract class ReportsRepository {
   abstract fetchByUserId(userId: string): Promise<Report[]>
 }
