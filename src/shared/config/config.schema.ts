@@ -7,6 +7,8 @@ export const configSchema = z.object({
   PORT: z.coerce.number().default(3333),
   DATABASE_URL: z.string().url(),
   SALT_ROUNDS: z.coerce.number().default(10),
+  JWT_SECRET: z.string(),
+  JWT_EXPIRES_IN: z.string().default('5m'),
 })
 
 export type Config = z.infer<typeof configSchema>
