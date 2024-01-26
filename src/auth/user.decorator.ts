@@ -6,15 +6,21 @@ import {
 
 import { AuthPayload } from './auth.service'
 
-export const User = createParamDecorator(
-  (_data: never, context: ExecutionContext): AuthPayload => {
-    const request = context.switchToHttp().getRequest()
-    const user = request.user
+export type UserData = {
+  id: string
+}
 
-    if (!user) {
+export const User = createParamDecorator(
+  (_data: never, context: ExecutionContext): UserData => {
+    const request = context.switchToHttp().getRequest()
+    const userPayload = request.user as AuthPayload
+
+    if (!userPayload) {
       throw new UnauthorizedException()
     }
 
-    return user
+    return {
+      id: userPayload.sub,
+    }
   },
 )

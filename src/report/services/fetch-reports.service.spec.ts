@@ -1,15 +1,15 @@
 import { makeReport } from '@/test/factories/report-factory'
 import { InMemoryReportsRepository } from '@/test/repositories/in-memory-reports-repository'
 
-import { ListReports } from './list-reports'
+import { FetchReportsService } from './fetch-reports.service'
 
-describe('ListReports', () => {
-  let sut: ListReports
+describe('FetchReportsService', () => {
+  let sut: FetchReportsService
   let inMemoryReportsRepo: InMemoryReportsRepository
 
   beforeEach(() => {
     inMemoryReportsRepo = new InMemoryReportsRepository()
-    sut = new ListReports(inMemoryReportsRepo)
+    sut = new FetchReportsService(inMemoryReportsRepo)
   })
 
   it('fetches all reports from user', async () => {
