@@ -3,7 +3,7 @@ import { BadRequestException, Body, Controller, Post } from '@nestjs/common'
 import { Public } from '@/auth/public.decorator'
 
 import { SignUpDto } from '../dtos/sign-up.dto'
-import { UserAlreadyExistsError } from '../errors/user-already-exists-error'
+import { UserAlreadyExistsError } from '../errors/user-already-exists.error'
 import { SignUpService } from '../services/sign-up.service'
 
 @Controller('/users/sign-up')

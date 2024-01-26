@@ -1,0 +1,22 @@
+meta {
+  name: Sign In
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/users/sign-in
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "daniel@example.com",
+    "password": "123456"
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("accessToken", res.body.accessToken)
+}
