@@ -4,6 +4,7 @@ import { Report, ReportStatus } from '@/report/report.entity'
 import {
   CreateReportInput,
   ReportsRepository,
+  UpdateReportInput,
 } from '@/report/report.repository'
 
 export class InMemoryReportsRepository implements ReportsRepository {
@@ -24,5 +25,22 @@ export class InMemoryReportsRepository implements ReportsRepository {
 
   async fetchByUserId(userId: string): Promise<Report[]> {
     return this.items.filter((report) => report.userId === userId)
+  }
+
+  async update(id: string, report: UpdateReportInput): Promise<Report> {
+    const reportIndex = this.items.findIndex((report) => report.id === id)
+
+    if (reportIndex === -1) {
+      throw new Error('Report not found')
+    }
+
+    const updatedReport = {
+      ...this.items[reportIndex],
+      ...report,
+    }
+
+    this.items[reportIndex] = updatedReport
+
+    return updatedReport
   }
 }

@@ -16,7 +16,7 @@ export type CreateReportResponse = {
 }
 
 @Injectable()
-export class CreateReport {
+export class CreateReportService {
   constructor(
     private readonly reportsRepository: ReportsRepository,
     private readonly queueRepository: QueueRepository,

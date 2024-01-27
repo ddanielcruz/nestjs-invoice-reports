@@ -3,15 +3,15 @@ import { QueueRepository } from '@/queue/queue.repository'
 import { makeReport } from '@/test/factories/report-factory'
 import { InMemoryReportsRepository } from '@/test/repositories/in-memory-reports-repository'
 
-import { CreateReport, CreateReportRequest } from './create-report'
+import { CreateReportService, CreateReportRequest } from './create-report'
 import { ReportsRepository } from '../report.repository'
 
 class QueueRepositoryStub implements QueueRepository {
   async add(): Promise<void> {}
 }
 
-describe('CreateReport', () => {
-  let sut: CreateReport
+describe('CreateReportService', () => {
+  let sut: CreateReportService
   let reportsRepository: ReportsRepository
   let queueRepository: QueueRepository
 
@@ -23,7 +23,7 @@ describe('CreateReport', () => {
   beforeEach(() => {
     reportsRepository = new InMemoryReportsRepository()
     queueRepository = new QueueRepositoryStub()
-    sut = new CreateReport(reportsRepository, queueRepository)
+    sut = new CreateReportService(reportsRepository, queueRepository)
   })
 
   it('creates a new report', async () => {
